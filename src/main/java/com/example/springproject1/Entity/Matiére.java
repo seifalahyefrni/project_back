@@ -32,4 +32,7 @@ public class Matiére {
 
     @ManyToMany(mappedBy="matiéres", cascade = CascadeType.ALL)
     private List<Classe> classes;
+
+    @ManyToMany(mappedBy="matiéres", cascade = CascadeType.ALL)
+    private List<Enseignant> enseignants;
 }

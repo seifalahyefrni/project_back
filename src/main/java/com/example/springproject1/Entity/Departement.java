@@ -29,6 +29,9 @@ public class Departement {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "departement")
     private List<Etudiant> etudiants;
 
+    @OneToMany(cascade = CascadeType.ALL, mappedBy="departement")
+    private List<Enseignant> enseignants;
+
 }
 
 
