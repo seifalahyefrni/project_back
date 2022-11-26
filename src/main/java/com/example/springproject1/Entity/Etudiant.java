@@ -36,6 +36,4 @@ public class Etudiant  {
     @ManyToOne
     Classe classe;
 
-    @ManyToMany(mappedBy="etudiants", cascade = CascadeType.ALL)
-    private List<Matiére> matiéres;
 }

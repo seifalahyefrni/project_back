@@ -23,9 +23,7 @@ public class Matiére {
     private String nom;
     private int nombre_horaire;
 
-    @ManyToMany(cascade = CascadeType.ALL)
-    private List<Etudiant> etudiants;
-
+ 
     @ManyToOne
     Departement departement;
 
