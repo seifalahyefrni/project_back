@@ -23,7 +23,7 @@ public class Matiére {
     private String nom;
     private int nombre_horaire;
 
- 
+
     @ManyToOne
     Departement departement;
 
