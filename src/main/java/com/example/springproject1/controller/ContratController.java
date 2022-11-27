@@ -16,7 +16,6 @@ public class ContratController {
 
     @GetMapping("/retrieve-all-contrats")
     public List<Contrat>getContrats() {
-
         List<Contrat> listContrats = contratService.findAll();
         return listContrats;
     }

@@ -16,7 +16,6 @@ import java.util.Date;
 @ToString
 @Slf4j
 @Builder
-
 public class Contrat {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

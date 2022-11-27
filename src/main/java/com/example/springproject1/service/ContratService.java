@@ -18,7 +18,7 @@ public class ContratService implements IContratService {
 
     public boolean deleteContrat(int idContrat) {
         if(contratRepository.existsById(idContrat))
-        {contratRepository.deleteById(idContrat);            
+        {contratRepository.deleteById(idContrat);
             return true;
         }else
             return false;
@@ -35,6 +35,7 @@ public class ContratService implements IContratService {
 
   
     public int ajoutContrat(Contrat c) {
+
         return contratRepository.save(c).getIdContrat();
     }
     
