@@ -11,5 +11,5 @@ public interface IContratService {
     int ajoutContrat(Contrat c);
     Contrat findByIdContrat(int idContrar);
     List<Contrat> findAll();
-
+    Contrat affectContratToEtudiant (int ce, String nomE,String prenomE);
 }

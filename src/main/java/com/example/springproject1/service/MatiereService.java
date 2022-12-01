@@ -14,6 +14,11 @@ public class MatiereService implements IMatiereService{
     @Autowired
     IMatiereRepository matiereRepository;
 
+
+    public Matiére affectDepartementToMatiere (int idMatiere,int idDepartement){
+        System.out.println("two");
+        matiereRepository.affectDepartementToMatiere (idMatiere,idDepartement);
+        return matiereRepository.findById(idMatiere).get();}
  public boolean deleteMatiere(int idMatiere){
      if(matiereRepository.existsById(idMatiere))
      {matiereRepository.deleteById(idMatiere);

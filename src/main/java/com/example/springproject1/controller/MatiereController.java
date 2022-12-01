@@ -17,6 +17,13 @@ public class MatiereController {
 
 
 
+    @PutMapping("/affect-departement-toMatiere/{matiere-id}/{departement-id}")
+    public int affectDepartementToMatiere (@PathVariable("matiere-id") int idMatiere,@PathVariable("departement-id") int idDepartement) {
+        System.out.println("one");
+       matiereService.affectDepartementToMatiere(idMatiere,idDepartement);
+
+        return idMatiere;
+    }
     @GetMapping("/retrieve-all-matieres")
     public List<Matiére> getMatieres() {
         List<Matiére> listMatieres = matiereService.findAll();

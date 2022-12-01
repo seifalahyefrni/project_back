@@ -14,7 +14,9 @@ public class ContratService implements IContratService {
 
     IContratRepository contratRepository;
 
-
+    public Contrat affectContratToEtudiant (int ce, String nomE,String prenomE){
+        contratRepository.affectContratToEtudiant(ce,nomE,prenomE);
+        return contratRepository.findById(ce).get();}
 
     public boolean deleteContrat(int idContrat) {
         if(contratRepository.existsById(idContrat))

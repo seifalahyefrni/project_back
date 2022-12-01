@@ -9,4 +9,5 @@ public interface IMatiereService {
     int ajoutMatiere(Matiére m);
     Matiére findByIdMatiere(int idMatiere);
     List<Matiére> findAll();
+    Matiére affectDepartementToMatiere (int idMatiere,int idDepartement);
 }
