@@ -12,6 +12,14 @@ import java.util.List;
 public class EtudiantService implements IEtudiantService{
     @Autowired
     private IEtudiantRepository etudiantRepository;
+
+   @Override
+   public List<Etudiant> getEtudiantByNomPrenom(String nom,String prenom){
+
+     List<Etudiant>  listEtudiant=etudiantRepository.getEtudiantByNomPrenom(nom,prenom);
+
+     return listEtudiant;
+   }
     @Override
     public List<Etudiant> getAllEtudiant() {
         List<Etudiant> etudiants = new ArrayList<Etudiant>();

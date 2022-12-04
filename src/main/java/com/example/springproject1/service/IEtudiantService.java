@@ -11,6 +11,6 @@ public interface IEtudiantService {
 
     public int ajoutEtudiant(Etudiant etudiant);
 
-
+    public List<Etudiant> getEtudiantByNomPrenom(String nom,String prenom);
     boolean deleteEtudiantById(int idEtudiant);
 }

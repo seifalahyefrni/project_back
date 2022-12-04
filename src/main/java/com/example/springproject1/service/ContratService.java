@@ -4,6 +4,7 @@ import com.example.springproject1.Entity.Contrat;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.example.springproject1.repository.IContratRepository;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -13,7 +14,7 @@ public class ContratService implements IContratService {
     @Autowired
 
     IContratRepository contratRepository;
-
+@Transactional
     public Contrat affectContratToEtudiant (int ce, String nomE,String prenomE){
         contratRepository.affectContratToEtudiant(ce,nomE,prenomE);
         return contratRepository.findById(ce).get();}

@@ -12,8 +12,8 @@ import java.util.List;
 @Repository
 public interface IContratRepository extends CrudRepository<Contrat,Integer> {
     @Modifying
-    @Query("update Contrat set etudiant= (select idEtudiant from Etudiant where nomE=:nomE and prenomE=:prenomE) where idContrat=:ce")
-    public Contrat affectContratToEtudiant(@Param("ce") int ce,@Param("nomE") String nomE,@Param("prenomE") String prenomE);
+    @Query(value = "update Contrat c set c.etudiant= (select e from Etudiant e where e.nomE=:nomE and e.prenomE=:prenomE) where c.idContrat=:ce")
+    public void affectContratToEtudiant(@Param("ce") int ce,@Param("nomE") String nomE,@Param("prenomE") String prenomE);
 
     @Query("select contrat from Contrat contrat join Universite universite on contrat.etudiant.departement member universite.Departements where universite.idUniv=?1")
     public List<Contrat> getListContratBy(int x);
