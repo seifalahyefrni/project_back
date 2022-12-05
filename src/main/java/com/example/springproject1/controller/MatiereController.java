@@ -1,7 +1,9 @@
 package com.example.springproject1.controller;
 
 import com.example.springproject1.Entity.Contrat;
+import com.example.springproject1.Entity.Departement;
 import com.example.springproject1.Entity.Matiére;
+import com.example.springproject1.service.DepartementService;
 import com.example.springproject1.service.IMatiereService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -15,14 +17,22 @@ public class MatiereController {
     @Autowired
     IMatiereService matiereService;
 
+    @Autowired
+    DepartementService departementService;
+
+
 
 
     @PutMapping("/affect-departement-toMatiere/{matiere-id}/{departement-id}")
-    public int affectDepartementToMatiere (@PathVariable("matiere-id") int idMatiere,@PathVariable("departement-id") int idDepartement) {
+    public Matiére affectDepartementToMatiere (@PathVariable("matiere-id") int idMatiere,@PathVariable("departement-id") int idDepartement) {
         System.out.println("one");
-       matiereService.affectDepartementToMatiere(idMatiere,idDepartement);
+      Matiére matiere=matiereService.findByIdMatiere(idMatiere);
+        Departement departement=departementService.getDepartementById(idDepartement);
+       matiere.setDepartement(departement);
+       matiereService.updateMatiere(matiere);
+      //  matiereService.affectDepartementToMatiere(idMatiere,idDepartement);
 
-        return idMatiere;
+        return matiere;
     }
     @GetMapping("/retrieve-all-matieres")
     public List<Matiére> getMatieres() {

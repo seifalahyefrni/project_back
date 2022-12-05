@@ -21,6 +21,7 @@ public class Etudiant  {
     private int idEtudiant;
     private String prenomE;
     private String nomE;
+    private String email;
     @Enumerated(EnumType.STRING)
     private Option opt;
 
