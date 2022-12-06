@@ -4,6 +4,7 @@ import com.example.springproject1.Entity.Contrat;
 import com.example.springproject1.Entity.Etudiant;
 import com.example.springproject1.emailSender.EmailSenderService;
 import com.example.springproject1.service.EtudiantService;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.web.bind.annotation.*;
@@ -36,19 +37,26 @@ public class ContratController {
 
         List<Etudiant> listE=etudiantService.getEtudiantByNomPrenom(nomE,prenomE);
         Etudiant etudiant=listE.get(0);
-        int e=calc(ce);
-        ce.setNbre_jours_rest(e);
+     //   int e=calc(ce,"affectation");
+  //      ce.setNbre_jours_rest(e);
         ce.setEtudiant(etudiant);
       contratService.updateContrat(ce);
 
-    //  calnbrejoursvalide();
    //  senderService.sendMail(etudiant.getEmail(),"Affectation de contrat","this is body");
         Contrat cc=contratService.findByIdContrat(ce.getIdContrat());
         return cc;
     }
 
-    public int calc(Contrat ce){
-        Date dd=ce.getDateDebutContrat();
+
+    public Date verif_source(Contrat c,String v){
+if (v=="ajout"){
+return c.getDateDebutContrat();
+}
+        return new Date();
+    }
+    public int calc(Contrat ce,String v){
+
+           Date dd=verif_source(ce,v);
         Date df=ce.getDateFinContrat();
         String pattern = "dd/MM/yyyy";
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
@@ -65,7 +73,7 @@ public class ContratController {
     public void calnbrejoursvalide(){
         List<Contrat> list=contratService.findAll();
         for (Contrat c: list) {
-            int nbre=calc(c);
+            int nbre=calc(c,"calc");
             c.setNbre_jours_rest(nbre);
             contratService.updateContrat(c);
             
@@ -84,7 +92,8 @@ public class ContratController {
     @PostMapping("/add-contrat")
 
     public int addContrat(@RequestBody Contrat c){
-
+        int e=calc(c,"ajout");
+        c.setNbre_jours_rest(e);
         return contratService.ajoutContrat(c);
     }
 

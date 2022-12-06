@@ -1,6 +1,7 @@
 package com.example.springproject1.Entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import lombok.*;
@@ -20,7 +21,7 @@ import java.util.Date;
 @ToString
 @Slf4j
 @Builder
-
+@JsonIgnoreProperties({ "idContrat ","etudiant"})
 public class Contrat {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -34,6 +35,5 @@ public class Contrat {
     private Specialite specialite  ;
     private Boolean archive ;
     @ManyToOne
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     Etudiant etudiant;
 }
